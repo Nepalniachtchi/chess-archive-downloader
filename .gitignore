@@ -1,0 +1,5 @@
+_archive/
+_cache/
+venv/
+.DS_Store
+__pycache__/
