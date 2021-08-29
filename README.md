@@ -1,7 +1,7 @@
 chess-archive-downloader
 ========================
 
-Crawls chess site archives to download monthly updates of player games for assembling into a PGN database.
+Create an archive of online chess site player games and tournaments, for assembling into monthly PGN databases.
 
 
 ## Install
