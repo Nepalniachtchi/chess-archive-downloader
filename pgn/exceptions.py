@@ -1,0 +1,4 @@
+
+
+class PgnLoadingException(Exception):
+    pass
