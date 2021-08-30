@@ -1,7 +1,7 @@
 import os
 import logging
 import chessdotcom
-from chessdotcom.types import ChessDotComError
+from chessdotcom.client import ChessDotComError
 
 from config import CACHE_ROOT
 
