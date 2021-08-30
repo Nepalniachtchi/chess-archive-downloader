@@ -71,5 +71,7 @@ class ChessComClient():
                 self.game_cache.set(cache_key, games_archive)
             except ChessDotComError as e:
                 logger.info(f"[ERROR] for {username} {date}: {e}")
+            except TypeError as e:
+                logger.info(f"[ERROR] TypeError for {username} {date}: {e}")
 
         return games_archive
