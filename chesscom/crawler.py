@@ -1,5 +1,4 @@
 import sys
-from itertools import chain
 import logging
 from typing import List
 from bloom_filter2 import BloomFilter
@@ -32,6 +31,25 @@ class Crawler():
     def add_players(self, players: List[str]):
         players = self.filter_seen_players(players)
         self.queue = list(set(self.queue + players))
+        return self
+
+    def add_tournament(self, tournament_id: str):
+        self.archive.add_tournament(tournament_id)
+        tournament = self.archive.get_tournament(tournament_id)
+        players = [
+            player.username
+            for player in tournament.players
+            if (
+                player.rating_hi and player.rating_hi >= 1950
+                and player.username not in self.queue
+            )
+        ]
+        logging.info(f"[PLAYERS] Adding {len(players)} players from {tournament_id}")
+        self.add_players(players)
+        return self
+
+    def add_tournaments(self, tournaments: List[str]):
+        [self.add_tournament(tournament) for tournament in tournaments]
         return self
 
     def get_next_player(self) -> str:
