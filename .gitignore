@@ -1,5 +1,6 @@
 _archive/
 _cache/
+_pgn/
 venv/
 .DS_Store
 __pycache__/
