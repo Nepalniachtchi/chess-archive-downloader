@@ -4,7 +4,7 @@ import sys
 import json
 import logging
 
-from config import CACHE_ROOT, ARCHIVE_ROOT
+from config import CACHE_ROOT, PGN_ROOT
 
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.StreamHandler(sys.stdout))
@@ -14,7 +14,7 @@ logger.setLevel(logging.DEBUG)
 class GameExporter():
     def __init__(self):
         self.daily_dir = f"{CACHE_ROOT}/daily"
-        self.export_dir = f"{ARCHIVE_ROOT}/daily"
+        self.pgn_dir = f"{PGN_ROOT}/daily"
         self.date = None
 
     def set_date(self, date):
@@ -24,7 +24,7 @@ class GameExporter():
     def get_daily_files(self):
         files = [
             file
-            for file in os.listdir(f"{self.daily_dir}")
+            for file in os.listdir(f"{self.daily_dir}/{self.date}")
             if file.endswith('.jsons')
         ]
         files.sort()
@@ -61,8 +61,8 @@ class GameExporter():
     def export_games(self, from_file, pgn_file):
         game_count = 0
         error_count = 0
-        with open(f"{self.daily_dir}/{from_file}", "r") as input_file:
-            with open(f"{self.daily_dir}/{pgn_file}", "w") as output_file:
+        with open(f"{self.daily_dir}/{self.date}/{from_file}", "r") as input_file:
+            with open(f"{self.pgn_dir}/{self.date}/{pgn_file}", "w") as output_file:
                 for index, json_doc in enumerate(input_file):
                     game = json.loads(json_doc)
                     # logger.debug(f"[GAME] {game}")
