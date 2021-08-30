@@ -1,3 +1,4 @@
+import os
 import re
 from pydantic import BaseModel
 from pgn.types import PgnBlock, PgnBlockType
@@ -93,15 +94,50 @@ def each_pgn_game(input_file):
             # print("[PGN] Add Body")
             game.add_body(block)
 
+def end_date_sort_key(pgn_headers):
+    return f"{pgn_headers['EndDate']}T{pgn_headers['EndTime']}"
+
+def date_sort_key(pgn_headers):
+    return f"{pgn_headers['Date']}{pgn_headers['Round'].ljust(4, '0')}"
 
 class PgnSorter():
     def __init__(self):
         self.input_file = None
+        self.output_file = None
+        self.sort_fields = []
+        self.items = []
 
     def set_input_file(self, input_file):
         self.input_file = input_file
         return self
 
+    def set_output_file(self, output_file):
+        self.output_file = output_file
+        return self
+
+    def sort_by_header(self, header: str):
+        self.sort_fields = [header]
+        return self
+
     def sort(self):
+        print(f"[SORT] Reading input file {os.path.basename(self.input_file)}")
         for game in each_pgn_game(self.input_file):
-            print(f"[{game.game_no:07}] {game}")
+            # print(f"[{game.game_no:07}] {game}")
+            # sort_key = end_date_sort_key(game.get_headers())
+            sort_key = end_date_sort_key(game.get_headers())
+            self.items.append({
+                "key": sort_key,
+                "data": game,
+            })
+
+        print(f"[SORT] sorting ({len(self.items)} items)")
+        # sorted_list = sorted(self.items, key=lambda k: k['key'])
+        self.items.sort(key=lambda k: k['key'])
+
+        print(f"[SORT] Writing output file {os.path.basename(self.output_file)}")
+        with open(self.output_file, "w") as output_file:
+            for item in self.items:
+                buffer = [block.text for block in item["data"].blocks]
+                output_file.write(PGN_BLOCK_SEPARATOR.join(buffer))
+
+        print(f"[SORT] sort complete.")

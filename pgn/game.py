@@ -48,8 +48,11 @@ class PgnGame():
         lines = block.text.split("\n")
         return dict(parse_header_line(line) for line in lines)
 
+    def get_headers(self):
+        return self.parse_header_block(self.blocks[0])
+
     def short_header(self):
-        headers = self.parse_header_block(self.blocks[0])
+        headers = self.get_headers()
         players = f"{headers['White']} - {headers['Black']}".ljust(46)[:46]
         event = headers['Event'].ljust(20)[:20]
         year = headers['Date'][:4]
