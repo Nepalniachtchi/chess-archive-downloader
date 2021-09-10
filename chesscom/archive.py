@@ -4,8 +4,8 @@ from chesscom.client import ChessComClient
 from chesscom.utils import flatten_dict, hash_shard
 from chesscom.tournaments import init_tournaments, Tournament
 
-logger = logging.getLogger("")
-logger.setLevel(logging.DEBUG)
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 class Archive():
     def __init__(self):

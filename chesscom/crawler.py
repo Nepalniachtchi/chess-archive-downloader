@@ -5,9 +5,9 @@ from bloom_filter2 import BloomFilter
 
 from chesscom.archive import Archive
 
-logger = logging.getLogger(__name__)
-logger.addHandler(logging.StreamHandler(sys.stdout))
-logger.setLevel(logging.DEBUG)
+logger = logging.getLogger("")
+# logger.addHandler(logging.StreamHandler(sys.stdout))
+logger.setLevel(logging.INFO)
 
 class Crawler():
     def __init__(self) -> None:
@@ -98,15 +98,15 @@ class Crawler():
 
 
     def crawl(self):
-        logger.debug(f"[START] Crawler ({self.date})")
+        logger.info(f"[START] Crawler ({self.date})")
 
         try:
             while True:
                 player = self.get_next_player()
                 self.mark_player_as_seen(player)
-                logger.debug(f"[{self.count}/{self.count + len(self.queue)}] Player: {player}")
+                logger.info(f"[{self.count}/{self.count + len(self.queue)}] Player: {player}")
                 self.crawl_player(player)
                 self.count += 1
 
         except IndexError:
-            logger.debug(f"[END] Crawler ({self.date})")
+            logger.info(f"[END] Crawler ({self.date})")
