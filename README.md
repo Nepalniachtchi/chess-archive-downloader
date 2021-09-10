@@ -25,15 +25,15 @@ pip install -r requirements.txt
 
 ```bash
 # Crawl monthly games using a seed list
-python -m scripts.get-monthly-games
+python -m scripts.get-monthly-games 2021-08
 
 # Create per-day file of games as JSON
-python -m scripts.create-daily-game-archive
+python -m scripts.create-daily-game-archive 2021-08
 
 # Sort daily files
 
 # Convert daily JSON files to PGN
-python -m scripts.export-games-as-pgn
+python -m scripts.export-games-as-pgn 2021-08
 
 # Remove duplicates
 
