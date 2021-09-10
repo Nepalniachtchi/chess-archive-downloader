@@ -70,10 +70,10 @@ class ChessComClient():
                 games_archive = response.json
                 self.game_cache.set(cache_key, games_archive)
             except ChessDotComError as e:
-                logger.warning(f"[ERROR] for {username} {date}: {e}")
+                logger.warn(f"[ERROR] for {username} {date}: {e}")
             except TypeError as e:
-                logger.warning(f"[ERROR] TypeError for {username} {date}: {e}")
+                logger.warn(f"[ERROR] TypeError for {username} {date}: {e}")
             except ConnectionResetError as e:
-                logger.warning(f"[ERROR] Connection reset for {username} {date}: {e}")
+                logger.warn(f"[ERROR] Connection reset for {username} {date}: {e}")
 
         return games_archive
