@@ -27,15 +27,25 @@ pip install -r requirements.txt
 # Crawl monthly games using a seed list
 python -m scripts.get-monthly-games 2021-08
 
-# Create per-day file of games as JSON
+# Create per-day file of games as JSON (one game per line)
 python -m scripts.create-daily-game-archive 2021-08
 
 # Sort daily files
+cd _cache/daily/2021-08/
+for FILE in "20*.jsons"; do OUTPUT="sorted-${FILE}"; echo "File: ${FILE} -> ${OUTPUT}"; sort $FILE > $OUTPUT; done
 
 # Convert daily JSON files to PGN
 python -m scripts.export-games-as-pgn 2021-08
 
-# Remove duplicates
-
 # Join into one monthly file
+cd _pgn/daily/2021-08
+cat sorted-2021-0*.pgn > ../chesscom-elite-2021-04-raw.pgn
+cd ..
+gzip cat sorted-2021-0*.pgn > ../chesscom-elite-2021-04-raw.pgn
+
+# Remove duplicates
+pgn-extract -s -D -C --output chesscom-elite-2021-08.pgn chesscom-elite-2021-08-raw.pgn
+
+# Count games in PGN file
+grep -e "\[Event" chesscom-elite-2021-08.pgn | wc -l
 ```
