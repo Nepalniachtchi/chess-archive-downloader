@@ -1,7 +1,7 @@
 import os
-import time
 import logging
 import chessdotcom
+from requests.exceptions import ConnectionError
 from chessdotcom.client import ChessDotComError
 
 from config import CACHE_ROOT
@@ -75,5 +75,7 @@ class ChessComClient():
                 logger.warn(f"[ERROR] TypeError for {username} {date}: {e}")
             except ConnectionResetError as e:
                 logger.warn(f"[ERROR] Connection reset for {username} {date}: {e}")
+            except ConnectionError:
+                logger.warn(f"[ERROR] Connection error for {username} {date}: {e}")
 
         return games_archive
