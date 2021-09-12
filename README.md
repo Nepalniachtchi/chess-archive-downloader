@@ -32,7 +32,7 @@ python -m scripts.create-daily-game-archive 2021-08
 
 # Sort daily files
 cd _cache/daily/2021-08/
-for FILE in "20*.jsons"; do OUTPUT="sorted-${FILE}"; echo "File: ${FILE} -> ${OUTPUT}"; sort $FILE > $OUTPUT; done
+for FILE in `ls -1 20*.jsons`; do OUTPUT="sorted-${FILE}"; echo "File: ${FILE} -> ${OUTPUT}"; sort $FILE > $OUTPUT; done
 
 # Convert daily JSON files to PGN
 python -m scripts.export-games-as-pgn 2021-08
