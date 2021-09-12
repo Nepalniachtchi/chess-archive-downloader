@@ -39,9 +39,9 @@ python -m scripts.export-games-as-pgn 2021-08
 
 # Join into one monthly file
 cd _pgn/daily/2021-08
-cat sorted-2021-0*.pgn > ../chesscom-elite-2021-04-raw.pgn
+cat sorted-2021-0*.pgn > ../chesscom-elite-2021-08-raw.pgn
 cd ..
-gzip cat sorted-2021-0*.pgn > ../chesscom-elite-2021-04-raw.pgn
+gzip chesscom-elite-2021-08-raw.pgn
 
 # Remove duplicates
 pgn-extract -s -D -C --output chesscom-elite-2021-08.pgn chesscom-elite-2021-08-raw.pgn
