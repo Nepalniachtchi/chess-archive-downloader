@@ -62,19 +62,19 @@ class GameExporter():
         game_count = 0
         error_count = 0
         with open(f"{self.daily_dir}/{self.date}/{from_file}", "r") as input_file:
-            for index, json_doc in enumerate(input_file):
-                game = json.loads(json_doc)
-                # logger.debug(f"[GAME] {game}")
-                pgn_game = self.extract_pgn(game)
+            with open(f"{self.pgn_dir}/{self.date}/{pgn_file}", "w") as output_file:
+                for index, json_doc in enumerate(input_file):
+                    game = json.loads(json_doc)
+                    # logger.debug(f"[GAME] {game}")
+                    pgn_game = self.extract_pgn(game)
 
-                if pgn_game is not False:
-                    # logger.debug(f"[GAME] PGN: {pgn_game}")
-                    with open(f"{self.pgn_dir}/{self.date}/{pgn_file}", "w") as output_file:
+                    if pgn_game is not False:
+                        # logger.debug(f"[GAME] PGN: {pgn_game}")
                         output_file.write(pgn_game + "\n")
-                    game_count = index
-                    # break
-                else:
-                    error_count += 1
+                        game_count = index
+                        # break
+                    else:
+                        error_count += 1
 
         logger.info(f"[EXPORT] Exported {game_count + 1} games to {pgn_file} ({error_count} Skipped)")
         return game_count + 1
