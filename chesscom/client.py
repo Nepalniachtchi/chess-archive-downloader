@@ -75,7 +75,7 @@ class ChessComClient():
                 logger.warn(f"[ERROR] TypeError for {username} {date}: {e}")
             except ConnectionResetError as e:
                 logger.warn(f"[ERROR] Connection reset for {username} {date}: {e}")
-            except ConnectionError:
+            except ConnectionError as e:
                 logger.warn(f"[ERROR] Connection error for {username} {date}: {e}")
 
         return games_archive
