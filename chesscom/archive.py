@@ -62,7 +62,7 @@ class Archive():
 
     def add_tournament(self, tournament_id: str) -> Tournament:
         if self.tournaments.has_tournament(tournament_id) is False:
-            logger.info(f"[TOURNAMENT] Adding: ({hash_shard(tournament_id)}) {tournament_id}")
+            print(f"[TOURNAMENT] Adding: ({hash_shard(tournament_id)}) {tournament_id}")
             tournament = self.fetch_tournament(tournament_id)
 
             self.tournaments.save_tournament(tournament)
