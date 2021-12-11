@@ -1,34 +1,26 @@
 from chesscom.archive import Archive
 from chesscom.utils import by_score
 
+## For pre-loading the tournament JSON documents.
+## Archives tournaments to ./_cache/tournaments/
 
-## Titled Tuesday tournaments
-# tournament = "titled-tuesday-blitz-june-29-2021-2428655"
-
-## Daily Championship tournaments -- needs scaffold of top-level doc
+## Daily Championship tournaments -- 
+# Note: chess.com public API endpoint fails on these tournaments
+# So needs scaffold of top-level doc
 # tournament = "2021-chess-com-daily-chess-championship"
 # tournament = "2020-chess-com-daily-chess-championship"
 
 archive = Archive()
 # archive.add_tournament(tournament)
 
-# tournament = archive.get_tournament(tournament)
-# players = tournament.players
-
-# for players in sorted(tournament.players, key=by_score, reverse=True):
-#     rating_diff = (players.rating_hi or 0) - (players.rating_lo or 0)
-#     print(f"{players.points}\t{players.rating_lo}-{players.rating_hi}  {rating_diff}\t{players.username}")
-
-
-
 # Titled Tuesday tournaments
 tournaments = [
-    # August 2021
-    "titled-tuesday-blitz-august-31-2021-2546688",
-    "titled-tuesday-blitz-august-24-2021-2533344",
-    "titled-tuesday-blitz-august-17-2021-2528831",
-    "titled-tuesday-blitz-august-10-2021-2514265",
-    "titled-tuesday-blitz-august-03-2021-2500049",
+    # November 2021 - Titled Tuesday tournaments
+    "titled-tuesday-blitz-november-30-2021-2764222",
+    "titled-tuesday-blitz-november-23-2021-2750236",
+    "titled-tuesday-blitz-november-16-2021-2736618",
+    "titled-tuesday-blitz-november-09-2021-2710127",
+    "titled-tuesday-blitz-november-02-2021-2688099",
 ]
 for tournament in tournaments:
     archive.add_tournament(tournament)
