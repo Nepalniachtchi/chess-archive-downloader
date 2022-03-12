@@ -1,4 +1,5 @@
 import os
+import json
 import logging
 import chessdotcom
 from requests.exceptions import ConnectionError
@@ -75,7 +76,9 @@ class ChessComClient():
                 logger.warn(f"[ERROR] TypeError for {username} {date}: {e}")
             except ConnectionResetError as e:
                 logger.warn(f"[ERROR] Connection reset for {username} {date}: {e}")
-            except ConnectionError:
+            except ConnectionError as e:
                 logger.warn(f"[ERROR] Connection error for {username} {date}: {e}")
+            except json.decoder.JSONDecodeError as e:
+                logger.warn(f"[ERROR] JSON Decode error for {username} {date}: {e}")
 
         return games_archive
