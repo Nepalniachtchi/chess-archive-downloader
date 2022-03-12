@@ -43,6 +43,8 @@ class Archive():
                 for games in group_data["games"]:
                     for side in ["white", "black"]:
                         game_player = games[side]
+                        if not isinstance(game_player, dict):
+                            continue
                         username = game_player["username"].lower()
                         rating = game_player["rating"]
 
