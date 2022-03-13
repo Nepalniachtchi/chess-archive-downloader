@@ -1,9 +1,17 @@
+
+# Rapid tournaments:
+# https://www.chess.com/club/live-tournaments/rapid-chess-championship-participants
+#
+# Titled Tuesdays:
+# https://www.chess.com/tournament/live/titled-tuesdays
+
 tournaments = {
     "2022": [
         "2022-chess-com-daily-chess-championship"
     ],
     "2022-03": [
         "rapid-chess-championship-week-4-2984466",
+        "rapid-chess-championship-week-5-2997973",
 
         "early-titled-tuesday-blitz-march-01-2022-2984464",
         "late-titled-tuesday-blitz-march-01-2022-2984465",
