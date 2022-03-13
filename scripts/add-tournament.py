@@ -107,6 +107,5 @@ tournaments = [
     "-titled-tuesday-blitz-1042665",
     "-titled-tuesday-blitz-1034328",
     "-titled-tuesday-blitz-1024163"
-
 ]
 

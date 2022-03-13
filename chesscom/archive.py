@@ -21,7 +21,7 @@ class Archive():
 
         for round_url in tournament_data["rounds"]:
             round_no = round_url.split(url_path, 1)[1]
-            logging.info(f"[TOURNAMENT] Adding: R.{round_no}")
+            logger.info(f"[TOURNAMENT] Adding: R.{round_no}")
             round_data = self.client.get_tournament_round(tournament_id, round_no)
             round_url = url_path + round_no + "/"
 
@@ -32,7 +32,7 @@ class Archive():
 
             for group_url in round_data["groups"]:
                 group_no = group_url.split(round_url, 1)[1]
-                logging.info(f"[TOURNAMENT] Adding: R.{round_no} G.{group_no}")
+                logger.info(f"[TOURNAMENT] Adding: R.{round_no} G.{group_no}")
                 group_data = self.client.get_tournament_round_group(tournament_id, round_no, group_no)
 
                 for player in group_data["players"]:
@@ -64,14 +64,14 @@ class Archive():
 
     def add_tournament(self, tournament_id: str) -> Tournament:
         if self.tournaments.has_tournament(tournament_id) is False:
-            logging.info(f"[TOURNAMENT] Adding: ({hash_shard(tournament_id)}) {tournament_id}")
+            print(f"[TOURNAMENT] Adding: ({hash_shard(tournament_id)}) {tournament_id}")
             tournament = self.fetch_tournament(tournament_id)
 
             self.tournaments.save_tournament(tournament)
-            logging.info(f"[TOURNAMENT] Save: {tournament.id}")
+            logger.info(f"[TOURNAMENT] Save: {tournament.id}")
 
         else:
-            logging.info(f"[TOURNAMENT] Already have: {tournament_id}")
+            logger.info(f"[TOURNAMENT] Already have: {tournament_id}")
             tournament = self.tournaments.load_tournament(tournament_id)
 
         # for players in sorted(tournament.players, key=by_score, reverse=True):

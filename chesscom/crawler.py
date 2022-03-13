@@ -44,7 +44,7 @@ class Crawler():
                 and player.username not in self.queue
             )
         ]
-        logging.info(f"[PLAYERS] Adding {len(players)} players from {tournament_id}")
+        logger.info(f"[PLAYERS] Adding {len(players)} players from {tournament_id}")
         self.add_players(players)
         return self
 
