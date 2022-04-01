@@ -12,11 +12,19 @@ tournaments = {
     "2022-03": [
         "rapid-chess-championship-week-4-2984466",
         "rapid-chess-championship-week-5-2997973",
+        "rapid-chess-championship-week-6-3021530",
+        "rapid-chess-championship-week-7-3035292",
 
         "early-titled-tuesday-blitz-march-01-2022-2984464",
         "late-titled-tuesday-blitz-march-01-2022-2984465",
         "early-titled-tuesday-blitz-march-08-2022-2997971",
-        "late-titled-tuesday-blitz-march-08-2022-2997972"
+        "late-titled-tuesday-blitz-march-08-2022-2997972",
+        "early-titled-tuesday-blitz-march-15-2022-3021527",
+        "late-titled-tuesday-blitz-march-15-2022-3021528",
+        "early-titled-tuesday-blitz-march-22-2022-3035072",
+        "late-titled-tuesday-blitz-march-22-2022-3035073",
+        "early-titled-tuesday-blitz-march-29-2022-3048362",
+        "late-titled-tuesday-blitz-march-29-2022-3048367"
     ],
     "2022-02": [
         "late-titled-tuesday-blitz-february-22-2022-2970993",
