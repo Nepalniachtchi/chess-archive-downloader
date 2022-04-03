@@ -17,7 +17,7 @@ if len(sys.argv) < 2:
 #
 # Caches player archives in ./_cache/games/YYYY-MM/
 
-# archive_date = "2021-07"
+# archive_date = "2021-08"
 archive_date = sys.argv[1]
 
 if not re.match("^\d{4}\-\d{2}$", archive_date):
