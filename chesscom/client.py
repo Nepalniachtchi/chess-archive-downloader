@@ -11,6 +11,7 @@ from .cache import JsonFileCache as Cache
 from .utils import hash_shard
 
 logger = logging.getLogger(__name__)
+# logger.setLevel(logging.DEBUG)
 
 class ChessComClient():
     def __init__(self):

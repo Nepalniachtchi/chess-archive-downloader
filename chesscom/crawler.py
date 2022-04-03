@@ -6,7 +6,7 @@ from bloom_filter2 import BloomFilter
 from chesscom.archive import Archive
 
 logger = logging.getLogger("")
-# logger.addHandler(logging.StreamHandler(sys.stdout))
+logger.addHandler(logging.StreamHandler(sys.stdout))
 logger.setLevel(logging.INFO)
 
 class Crawler():

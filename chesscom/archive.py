@@ -5,7 +5,7 @@ from chesscom.utils import flatten_dict, hash_shard
 from chesscom.tournaments import init_tournaments, Tournament
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 
 class Archive():
     def __init__(self):
